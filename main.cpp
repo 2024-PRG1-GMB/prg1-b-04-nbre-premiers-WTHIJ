@@ -11,12 +11,13 @@ au maximum. La limite peut toutefois être modifiée par l'utilisateur.
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 using namespace std;
 
 int main() {
 
     int nombre_limite;
-    char reponse;
+    string reponse;
 
     cout << "Ce programme affiche tous les nombres premiers "
          << "compris entre 1 et une valeur saisie par l’utilisateur." << endl;
@@ -34,7 +35,7 @@ int main() {
         for (int nombre_actuel = 2; nombre_actuel <= nombre_limite; ++nombre_actuel) {
             compteur = 0;
 
-            //Test de tous les diviseurs possibles pour le nombre actuel
+            //Test de tous les diviseurs possibles pour le nombre actuel (jusqu'à la racine du nombre actuel)
 
             for (int diviseur = 1; diviseur * diviseur <= nombre_actuel; ++diviseur) {
                 if (nombre_actuel % diviseur == 0) {
@@ -48,10 +49,12 @@ int main() {
                 if (nombre_colones < 5) {
                     cout << '\t' << nombre_actuel << " ";
                     ++nombre_colones;
+
                 } else {
                     cout << endl << '\t' << nombre_actuel << " ";
                     nombre_colones = 0;
                     ++nombre_colones;
+
                 }
             }
         }
@@ -59,7 +62,7 @@ int main() {
         cout << "\n" << "Souhaitez-vous recommencer ? [O/N] ";
         cin >> reponse;
 
-    } while (reponse == 'O');
+    } while (reponse != "N");
 
     return EXIT_SUCCESS;
 }
